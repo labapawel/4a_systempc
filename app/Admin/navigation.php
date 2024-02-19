@@ -33,6 +33,25 @@ return [
         'icon'  => 'fas fa-info-circle',
         'url'   => route('admin.information'),
     ],
+    (new Page(\App\Models\rodzajeMa::class))
+               ->setPriority(100)
+               ->setIcon('fas fa-cogs')
+               ->setTitle("Rodzaje Materiałów")
+               //->setUrl('users')
+            //    ->setAccessLogic(function (Page $page) {
+            //        return auth()->user()->isSuperAdmin();
+            //    })
+               ,
+    (new Page(\App\Models\rodzajeSp::class))
+               ->setPriority(100)
+               ->setIcon('fas fa-sitemap')
+               ->setTitle("Rodzaje Sprzętu")
+               //->setUrl('users')
+            //    ->setAccessLogic(function (Page $page) {
+            //        return auth()->user()->isSuperAdmin();
+            //    })
+               ,
+
 
     // Examples
     // [
