@@ -25,11 +25,13 @@ return [
     [
         'title' => 'Dashboard',
         'icon'  => 'fas fa-tachometer-alt',
+        'priority' => 1,
         'url'   => route('admin.dashboard'),
     ],
 
     [
         'title' => 'Information',
+        'priority' => 2,
         'icon'  => 'fas fa-info-circle',
         'url'   => route('admin.information'),
     ],
