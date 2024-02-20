@@ -1,0 +1,15 @@
+do konfiguracji apache dla xamp, ustawić odpowiednie ściezki
+
+
+<VirtualHost 192.168.8.161:443>
+    DocumentRoot "C:\Users\uczen\Documents\SystemPC\4a_systempc\public"
+    ServerName HOST1
+    SSLEngine on
+    SSLCertificateFile "C:\Users\uczen\Documents\SystemPC\4a_systempc\cert.crt"
+    SSLCertificateKeyFile "C:\Users\uczen\Documents\SystemPC\4a_systempc\cert.key"
+    <Directory "C:\Users\uczen\Documents\SystemPC\4a_systempc\public">
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>        
