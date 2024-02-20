@@ -4,12 +4,15 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h4 class="mt-4">PTI</h4>
+                <h4 class="mt-4">PTI UTK</h4>
             </div>
         </div>
     </div>
     
 @section('main')
+<form  method="post">
+    @csrf
+
     <div class="container">
     <div class="row">
     <div class="col-6">
@@ -34,9 +37,13 @@
             @include("compo.multiinput", ["id"=>"model", "title"=>"Model", "dane"=>\App\Models\rodzajeMa::all()])
         </div>
 
+        <div class="col-12">
+            <input type="submit" class="btn btn-success mt-3" value="Zapisz">
+            <input type="button"  class="btn btn-info  mt-3" value="nowy">
+        </div>
     </div>
     </div>
-
+    </form>
 
 @endsection
 

@@ -1,6 +1,6 @@
 <div class="ui-widget input-group mt-2">
   <label for="{{$id}}" class="input-group-text">{{$title}}</label>
-  <input id="{{$id}}" @isset($name)name="{{$name}}"@endisset @isset($value)value="{{$value}}"@endisset  class="form-control">
+  <input id="{{$id}}" name="{{$id}}" @isset($value)value="{{$value}}"@endisset  class="form-control">
 </div>
 
 <script>
