@@ -16,7 +16,7 @@
     <div class="container">
     <div class="row">
     <div class="col-6">
-            @include("compo.select", ["id"=>"sala", "title"=>"Sala", "dane"=>\App\Models\rodzajeSp::all()])
+            @include("compo.select", ["id"=>"sala", "title"=>"Sala", "dane"=>\App\Models\sale::all()])
         </div>
     <div class="col-6">
             @include("compo.input", ["id"=>"stanowisko", "title"=>"Stanowisko", "dane"=>\App\Models\rodzajeSp::all()])
@@ -25,7 +25,7 @@
             @include("compo.select", ["id"=>"prod", "title"=>"Rodzaj sprzętu", "dane"=>\App\Models\rodzajeSp::all()])
         </div>
         <div class="col-12">
-            @include("compo.input", ["id"=>"sn", "title"=>"Numer seryjny", "dane"=>\App\Models\rodzajeSp::all()])
+            @include("compo.inputscan", ["id"=>"sn", "title"=>"Numer seryjny", "dane"=>\App\Models\rodzajeSp::all()])
         </div>
         <div class="col-12">
             @include("compo.input", ["id"=>"masra", "title"=>"Marka", "dane"=>\App\Models\rodzajeSp::all()])

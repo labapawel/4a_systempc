@@ -17,3 +17,25 @@
   .tr {
     text-align: right;
   }
+
+
+  #video-container video {
+    line-height: 0;
+    max-width: 100% !important;
+}
+
+
+.cont {
+    width: 100vw;
+    position: fixed;
+    top: 10;
+    left: 0px;
+    z-index: 1000;
+    background-color: rgba(255,255,255,0.5);
+    text-align: center;
+}
+
+.hideee {
+ 
+  left:-3000px;
+}
