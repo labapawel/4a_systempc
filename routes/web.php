@@ -17,6 +17,9 @@ use App\Http\Controllers\Auth\ResetPasswordController ;
 */
 
 Route::get('/', function () {
+    return view('start');
+});
+Route::get('/dodaj', function () {
     return view('chprod');
 });
 
@@ -27,11 +30,15 @@ Route::get('/serial/{sn}', function ($sn) {
      {
         $dane['serialno']=$sn;
      } else $dane = $dane->toArray(); 
-    return redirect()->to("/")->withInput($dane);
+    return redirect()->to("/dodaj")->withInput($dane);
 });
 
+Route::post('/szukaj', function () {
+    $inp = \Request::all();
+    dd($inp);
+});
 
-Route::post('/', function () {
+Route::post('/dodaj', function () {
     $inp = \Request::all();
     // dd($inp);
 
