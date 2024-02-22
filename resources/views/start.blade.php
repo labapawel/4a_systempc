@@ -24,7 +24,7 @@
                 </div>
                 </div>
             <div class="col-12">
-                @include("compo.inputscan", ["id"=>"qr", "title"=>"Szukaj", "dane"=>\App\Models\rodzajeSp::all()])
+                @include("compo.inputscan", ["id"=>"szukaj", "title"=>"Szukaj", "dane"=>\App\Models\rodzajeSp::all()])
             </div>
             <div class="col-12">
                 <input type="submit" class="mt-3 btn btn-success" value="Szukaj">

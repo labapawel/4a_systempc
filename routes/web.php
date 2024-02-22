@@ -35,6 +35,11 @@ Route::get('/serial/{sn}', function ($sn) {
 
 Route::post('/szukaj', function () {
     $inp = \Request::all();
+    if(empty($inp['szukaj']))
+        return redirect()->back();
+
+    if($inp['typ']=="serialn")
+        return redirect()->to("/serial/{$inp['szukaj']}");
     dd($inp);
 });
 

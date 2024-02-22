@@ -12,17 +12,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script>
-        console.error = (e) =>{
-
-            fetch(`/log?error=${e}`)
-                
-                .then(e=>{console.log(e);
-
-                })
-        }
-        console.error("błąd");
-    </script>
+  
     
 <header>
     @yield('header')
