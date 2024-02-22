@@ -14,11 +14,18 @@ return new class extends Migration
         Schema::create('sprzets', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('rodz_id');
-            $table->string('model');
+            $table->unsignedBigInteger('salaid');
+            $table->string('model')->nullable();
+            $table->string('stanowisko')->nullable();
+            $table->string('marka')->nullable();
             $table->string('serialno');
             $table->foreign('rodz_id')
             ->references('id')
             ->on('rodzaje_sps')
+            ->onDelete('restrict'); 
+            $table->foreign('salaid')
+            ->references('id')
+            ->on('sales')
             ->onDelete('restrict'); 
             $table->timestamps();
         });

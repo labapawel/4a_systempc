@@ -56,7 +56,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'url_prefix' => 'admin',
+    'url_prefix' => 'admin321123',
 
     /*
      * Subdomain & Domain support routes
