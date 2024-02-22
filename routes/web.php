@@ -20,7 +20,7 @@ Route::get('/', function () {
     return view('chprod');
 });
 
-Route::get('/{sn}', function ($sn) {
+Route::get('/serial/{sn}', function ($sn) {
     $dane = \App\Models\sprzet::where('serialno', $sn)->first();
     
     if(!$dane)

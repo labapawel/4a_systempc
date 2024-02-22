@@ -54,6 +54,25 @@ return [
             //    })
                ,
 
+    (new Page(\App\Models\sale::class))
+               ->setPriority(100)
+               ->setIcon('fas fa-sitemap')
+               ->setTitle("Sale")
+               //->setUrl('users')
+            //    ->setAccessLogic(function (Page $page) {
+            //        return auth()->user()->isSuperAdmin();
+            //    })
+               ,
+    (new Page(\App\Models\sprzet::class))
+               ->setPriority(100)
+               ->setIcon('fas fa-sitemap')
+               ->setTitle("Wykaz sprzętu")
+               //->setUrl('users')
+            //    ->setAccessLogic(function (Page $page) {
+            //        return auth()->user()->isSuperAdmin();
+            //    })
+               ,
+
 
     // Examples
     // [
