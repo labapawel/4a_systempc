@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\ForgotPasswordController ;
+use App\Http\Controllers\Auth\ResetPasswordController ;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +18,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('chprod');
+});
+
+Route::get('/{sn}', function ($sn) {
+    $dane = \App\Models\sprzet::where('serialno', $sn)->first();
+    
+    if(!$dane)
+     {
+        $dane['serialno']=$sn;
+     } else $dane = $dane->toArray(); 
+    return redirect()->to("/")->withInput($dane);
 });
 
 
@@ -43,3 +56,22 @@ Route::post('/', function () {
 
     return redirect()->back()->withInput()->with('success', 'Wiadomość została pomyślnie wysłana!');
 });
+
+// Trasa dla wyświetlania formularza logowania
+Route::get('login', 'App\Http\Controllers\Auth\LoginController@showLoginForm')->name('login');
+// Trasa do przetwarzania logowania
+Route::post('login', 'App\Http\Controllers\Auth\LoginController@login');
+// Trasa do wylogowywania
+Route::post('logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+
+
+// Trasa dla wyświetlania formularza resetowania hasła
+Route::get('password/reset', 'App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+// Trasa do przetwarzania resetowania hasła
+Route::post('password/email', 'App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+// Trasa dla formularza resetowania hasła
+Route::get('password/reset/{token}', 'App\Http\Controllers\Auth\ResetPasswordController@showResetForm')->name('password.reset');
+// Trasa do przetwarzania resetowania hasła
+Route::post('password/reset', 'App\Http\Controllers\Auth\ResetPasswordController@reset');
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
