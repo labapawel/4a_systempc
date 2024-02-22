@@ -1,4 +1,5 @@
-<div class="ui-widget input-group  mt-2">
+
+<div class="ui-widget input-group  mt-2 @error($id) require @enderror">
                 <label for="{{$id}}" class="input-group-text">{{$title}}</label>
                 <select id="{{$id}}" name="{{$id}}" class="form-select">
                     <option value>Jedno z..</option>

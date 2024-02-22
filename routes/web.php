@@ -22,10 +22,21 @@ Route::post('/', function () {
     $inp = \Request::all();
     // dd($inp);
 
-    $mod = \App\Models\sprzet::firstOrCreate(["serialno"=>$inp['serialno']]);
-    $mod->rodz_id = $inp['rodz_id']; 
+    $validator = Validator::make($inp, [
+        'rodz_id' => 'required|numeric',
+        'salaid' => 'required|numeric',
+        'serialno' => 'required|string|min:6',
+    ]);
+
+    // Jeśli walidacja nie powiedzie się, zwróć odpowiedź z błędami
+    if ($validator->fails()) {
+        return redirect()->back()->withInput()->withErrors($validator);
+    }
+
+    $mod = \App\Models\sprzet::firstOrCreate(["rodz_id"=>$inp['rodz_id'], "salaid"=>$inp['salaid'], "serialno"=>$inp['serialno']]);
+    // $mod->rodz_id = $inp['rodz_id']; 
     $mod->model = $inp['model']; 
-    $mod->salaid = $inp['salaid']; 
+    // $mod->salaid = $inp['salaid']; 
     $mod->stanowisko = $inp['stanowisko']; 
     $mod->marka = $inp['marka'];
     $mod->save(); 

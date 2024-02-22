@@ -13,6 +13,9 @@
     margin: 0;
     padding: 6px 10px;
   }
+.require > input, .require > label, .require > select {
+  border-color:red
+}
 
   .tr {
     text-align: right;

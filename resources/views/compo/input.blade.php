@@ -1,7 +1,5 @@
-@error($id)
-            <div class="text-danger">{{ $message }}</div>
-@enderror
-<div class="ui-widget input-group mt-2">
+
+<div class="ui-widget input-group mt-2 @error($id) require @enderror">
   <label for="{{$id}}" class="input-group-text">{{$title}}</label>
   <input id="{{$id}}" name="{{$id}}" value="{{ old($id) }}"  class="form-control">
 </div>
