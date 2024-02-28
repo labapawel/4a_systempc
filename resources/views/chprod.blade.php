@@ -15,6 +15,9 @@
 
     <div class="container">
     <div class="row">
+        <div class="col-12">
+            <a href="/dodaj" class="btn btn-info">Nowy</a>
+        </div>
         <div class="col-6">
             @include("compo.select", ["id"=>"salaid", "title"=>"Sala", "dane"=>\App\Models\sale::orderBy('numer','asc')->get()])
         </div>
@@ -32,6 +35,9 @@
         </div>
         <div class="col-12">
             @include("compo.input", ["id"=>"model", "title"=>"Model", "dane"=>\App\Models\rodzajeSp::all()])
+        </div>
+        <div class="col-12">
+            @include("compo.multiinput", ["id"=>"model", "title"=>"Model", "dane"=>\App\Models\rodzajeMa::all()])
         </div>
 
         <div class="col-12">

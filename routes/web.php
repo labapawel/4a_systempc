@@ -16,10 +16,15 @@ use App\Http\Controllers\Auth\ResetPasswordController ;
 |
 */
 
+Route::get("/test", function(){
+    dd(\App\Models\sprzet::find(1)->Material[0]->Opis);
+});
+
 Route::get('/', function () {
     return view('start');
 });
 Route::get('/dodaj', function () {
+
     return view('chprod');
 });
 
@@ -58,6 +63,8 @@ Route::post('/dodaj', function () {
         return redirect()->back()->withInput()->withErrors($validator);
     }
 
+    dd($inp);
+
     $mod = \App\Models\sprzet::firstOrCreate(["rodz_id"=>$inp['rodz_id'], "salaid"=>$inp['salaid'], "serialno"=>$inp['serialno']]);
     // $mod->rodz_id = $inp['rodz_id']; 
     $mod->model = $inp['model']; 
@@ -65,6 +72,12 @@ Route::post('/dodaj', function () {
     $mod->stanowisko = $inp['stanowisko']; 
     $mod->marka = $inp['marka'];
     $mod->save(); 
+
+    foreach($inp['sel'] as $key=>$item)
+    {
+        $el = \App\Models\materialWartosc::firstOrCreate(['sprz_id'=>$key])
+    }
+
 
     return redirect()->back()->withInput()->with('success', 'Wiadomość została pomyślnie wysłana!');
 });

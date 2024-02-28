@@ -16,11 +16,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                <div class="form-check">
+                <!-- <div class="form-check">
                     <input type="radio"  class="form-check-input" name="typ" value="qr" id="qr" checked><label  class="form-check-label"  for="qr">Kod QR</label>
-</div>
+</div> -->
                     <div class="form-check">
-                    <input type="radio" class="form-check-input" name="typ" value="serialn" id="serialn"><label  class="form-check-label"  for="serialn">Numer seryjny</label>
+                    <input type="radio" checked class="form-check-input" name="typ" value="serialn" id="serialn"><label  class="form-check-label"  for="serialn" >Numer seryjny</label>
                 </div>
                 </div>
             <div class="col-12">

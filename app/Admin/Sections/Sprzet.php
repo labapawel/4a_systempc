@@ -103,10 +103,11 @@ class Sprzet extends Section implements Initializable
     public function onEdit($id = null, $payload = [])
     {
         $form = AdminForm::card()->addBody([
-            AdminFormElement::text('numer', 'Numer')
+            AdminFormElement::text('serialno', 'Numer seryjny')
                     ->required(),
-            AdminFormElement::text('opis', 'Opis')
-                    ->required()
+            // AdminFormElement::text('model', 'Model'),
+            // AdminFormElement::text('marka', 'Marka'),
+            // AdminFormElement::text('stanowisko', 'Stanowisko')
         ]);
 
         $form->getButtons()->setButtons([
