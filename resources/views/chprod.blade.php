@@ -15,9 +15,7 @@
 
     <div class="container">
     <div class="row">
-        <div class="col-12">
-            <a href="/dodaj" class="btn btn-info">Nowy</a>
-        </div>
+        
         <div class="col-6">
             @include("compo.select", ["id"=>"salaid", "title"=>"Sala", "dane"=>\App\Models\sale::orderBy('numer','asc')->get()])
         </div>
@@ -26,6 +24,9 @@
         </div>
         <div class="col-12">
             @include("compo.select", ["id"=>"rodz_id", "title"=>"Rodzaj sprzętu", "dane"=>\App\Models\rodzajeSp::orderBy('nazwa','asc')->get()])
+        </div>
+        <div class="col-12">
+            @include("compo.input", ["id"=>"qr", "title"=>"Kod QR", "dane"=>\App\Models\sale::orderBy('numer','asc')->get()])
         </div>
         <div class="col-12">
             @include("compo.input", ["id"=>"serialno", "title"=>"Numer seryjny", "dane"=>\App\Models\rodzajeSp::all()])
@@ -43,6 +44,9 @@
         <div class="col-12">
             <input type="submit" class="btn btn-success mt-3" value="Zapisz">
             <input type="button"  class="btn btn-info nowy  mt-3" value="nowy">
+            @if(old('serialno'))
+                <a href="/serial/{{old('serialno')}}" class="btn btn-warning  mt-3">Reload</a>
+            @endif
         </div>
         <script>
             document.querySelector(".nowy").addEventListener("click", ()=>{

@@ -29,10 +29,11 @@ Route::get('/dodaj', function () {
 });
 
 Route::get('/serial/{sn}', function ($sn) {
-    $dane = \App\Models\sprzet::where('serialno', $sn)->first();
+    $dane = \App\Models\sprzet::where('serialno', $sn)->orWhere('qr', $sn)->first();
     
     if(!$dane)
      {
+        $dane['qr']=$sn;
         $dane['serialno']=$sn;
      } else $dane = $dane->toArray(); 
     return redirect()->to("/dodaj")->withInput($dane);
@@ -63,23 +64,33 @@ Route::post('/dodaj', function () {
         return redirect()->back()->withInput()->withErrors($validator);
     }
 
-    dd($inp);
+//    dd($inp);
 
     $mod = \App\Models\sprzet::firstOrCreate(["rodz_id"=>$inp['rodz_id'], "salaid"=>$inp['salaid'], "serialno"=>$inp['serialno']]);
     // $mod->rodz_id = $inp['rodz_id']; 
     $mod->model = $inp['model']; 
+    $mod->qr = $inp['qr']; 
     // $mod->salaid = $inp['salaid']; 
     $mod->stanowisko = $inp['stanowisko']; 
     $mod->marka = $inp['marka'];
     $mod->save(); 
 
+    if(isset($inp['delitem']) && count($inp['delitem']))
+    {
+        foreach($inp['delitem'] as $item)
+        \App\Models\materialWartosc::find($item)->delete();
+    }
+    if(isset($inp['sel']) && count($inp['sel']))
     foreach($inp['sel'] as $key=>$item)
     {
-        $el = \App\Models\materialWartosc::firstOrCreate(['sprz_id'=>$key])
+        if(isset($inp['wart'][$key]) && !empty($inp['wart'][$key]))
+        $el = \App\Models\materialWartosc::firstOrCreate(['sprz_id'=>$mod->getKey(), 'rodzmas_id'=>$item]);
+        $el->wartosc = $inp['wart'][$key];
+        $el->save();
     }
 
-
-    return redirect()->back()->withInput()->with('success', 'Wiadomość została pomyślnie wysłana!');
+    $dane = $mod->toArray();
+    return redirect()->back()->withInput($dane)->with('success', 'Wiadomość została pomyślnie wysłana!');
 });
 
 // Trasa dla wyświetlania formularza logowania

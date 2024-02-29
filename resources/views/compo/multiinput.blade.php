@@ -1,3 +1,4 @@
+<div class="delitem"></div>
 <div class="row multiinp">
 <div class="col-12 mt-2">
   <span class="btn btn-success" onclick="dodaj_elem('','','')">+</span>
@@ -11,6 +12,9 @@
   const $$ = e=>document.querySelector(e);
   const New = (e) => document.createElement(e);    
   let pola = @json($dane);
+  /*
+    @name
+  */
    function dodaj_elem(ids, selid, val)
     {
       let col6a = New("div");
@@ -23,7 +27,7 @@
       let kont1 = New('div');
       kont1.className="ui-widget input-group mt-2";
       let label1 = New("label");
-      label1.innerText = 'Rodzaj';
+      label1.innerText = 'Wartość';
       label1.className = 'input-group-text';
       let sel = New('select');
       sel.name=`sel[${ids}]`;
@@ -43,7 +47,7 @@
       del.innerText= '-'
       kont1.append(del);
 
-
+      col6a.setAttribute('ids', ids);
       col6a.append(kont);
 
       let o=New('option');
@@ -64,8 +68,14 @@
       col6b.append(kont1);
             col6b.className="col-6";
       del.addEventListener('click',(e)=>{
+        let idx = col6a.getAttribute('ids');
+        let i = New("input");
+        i.name = 'delitem[]';
+        i.type='hidden';
+        i.value = idx;
         col6a.remove();
         col6b.remove();
+        $(".delitem").append(i);
       })      
       $$(".multiinp").append(col6a);
       $$(".multiinp").append(col6b);

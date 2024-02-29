@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('stanowisko')->nullable();
             $table->string('marka')->nullable();
             $table->string('serialno');
+            $table->string('qr', 50)->nullable();
             $table->foreign('rodz_id')
             ->references('id')
             ->on('rodzaje_sps')
