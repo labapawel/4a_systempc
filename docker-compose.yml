@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  database:
+    container_name: syspc-db
+    image: mariadb:latest
+    ports:
+      - 3306:${DB_PORT}
+    environment:  
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - syspc-vol:/var/lib/mysql
+    networks:
+      - syspc-net
+
+      
+volumes:
+  syspc-vol:
+
+networks:
+  syspc-net:
+      driver: bridge
