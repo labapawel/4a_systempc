@@ -1,6 +1,17 @@
 version: "3.9"
 
 services:
+  php:
+    container_name: syspc
+    build:
+      context: .
+    ports:
+      - 8000:8000        
+    volumes:
+      - ./:/var/www
+    networks:
+      - syspc-net
+
   database:
     container_name: syspc-db
     image: mariadb:latest
